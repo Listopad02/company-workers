@@ -1,0 +1,86 @@
+.table {
+    display: flex;
+    align-items: center;
+    justify-content: center;
+    height: 100vh;
+    background-color: #4005A0;
+}
+.table__container {
+    background-color: #FAFCF8;
+    border: 1px solid #fff;
+    border-radius: 10px;
+    padding: 50px;
+}
+.table__settings {
+    display: flex;
+    justify-content: space-between;
+    padding: 0 0 10px 0;
+}
+.table__settings-checkbox {
+    display: flex;
+    align-items: center;
+}
+.settings__checkbox-text {
+    margin: 0;
+    padding: 0 10px 0 0;
+}
+.settings__buttons-button {
+    width: 82px;
+    height: 38px;
+    margin-left: 10px;
+    border: none;
+    border-radius: 5px;
+    cursor: pointer;
+}
+.add {
+    background-color: #E1CFFF;
+}
+.add:hover {
+    background-color: #cdb5f3;
+}
+.delete {
+    background-color: #960018;
+    color: #fff;
+}
+.delete:hover {
+    background-color: #8a0219;
+}
+.table__header {
+    display: flex;
+    align-items: center;
+    padding: 0px 20px;
+    gap: 20px;
+    height: 40px;
+    background: #F5F5F5;
+    border: 1px solid #ccc;
+    border-radius: 15px 15px 0 0;
+}
+.table__header-item:first-of-type, .table__body-item:first-of-type {
+    width: 56px;
+}
+.table__header-item, .table__body-item {
+    width: 177px;
+}
+input {
+    width: 14px;
+    height: 14px;
+    cursor: pointer;
+    box-shadow: inset 0px 1px 2px rgba(0, 0, 0, 0.2);
+}
+.table__body {
+    display: flex;
+    align-items: center;
+    padding: 0px 20px;
+    gap: 20px;
+    height: 60px;
+    background: #FFFFFF;
+    border: 1px solid #E1CFFF;
+}
+.table__body:hover {
+    background: #EEE3FF;
+    color: #4005A0;
+    font-weight: 600;
+}
+.table__body:last-of-type {
+    border-radius: 0 0 15px 15px;
+}
