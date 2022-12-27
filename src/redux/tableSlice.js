@@ -215,6 +215,7 @@ export const tableSlice = createSlice({
         ],
         active: [],
         open: false,
+        checkedAll: false
     },
     reducers: {
         deleteValue: (state) => {
@@ -225,6 +226,7 @@ export const tableSlice = createSlice({
             if (!state.active.includes(action.payload)) {
                 state.active.push(action.payload)
             }
+            state.checkedAll = false
         },
         setInactive: (state, action) => {
             state.active.splice(action.payload, 1)
@@ -246,6 +248,9 @@ export const tableSlice = createSlice({
             for (let i = 0; i < state.companies.length; i++) {
                 state.companies[i].checked = action.payload
             }
+        },
+        setCheckedAll: (state) => {
+            state.checkedAll = !state.checkedAll
         }
     },
     extraReducers: {},
@@ -253,5 +258,6 @@ export const tableSlice = createSlice({
 
 const { actions, reducer } = tableSlice
 
-export const { setActive, setInactive, deleteValue, setChecked, setOpen, pushToCompanies, selectAll } = actions
+export const { setActive, setInactive, deleteValue, setChecked, 
+               setOpen, pushToCompanies, selectAll, setCheckedAll } = actions
 export default reducer

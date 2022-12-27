@@ -3,12 +3,12 @@ import { useState } from "react"
 import Alert from "../Alert/Alert"
 import TableItem from '../TableItem/TableItem'
 import { useDispatch, useSelector } from "react-redux"
-import { deleteValue, setOpen, selectAll } from '../../redux/tableSlice'
+import { deleteValue, setOpen, selectAll, setCheckedAll } from '../../redux/tableSlice'
 
 const Table = ({ firstCol, secondCol, thirdCol }) => {
-    const [checked, setChecked] = useState(false)
     const dispatch = useDispatch();
     const companies = useSelector(state => state.table.companies);
+    const checkedAll = useSelector(state => state.table.checkedAll);
 
     return (
         <div className='table'>
@@ -19,10 +19,11 @@ const Table = ({ firstCol, secondCol, thirdCol }) => {
                         <input type="checkbox" 
                                name="selectAll" 
                                id="selectAll"
+                               checked={checkedAll}
                                onChange={() => {
-                                   setChecked(!checked)
+                                   dispatch(setCheckedAll())
 
-                                   if (!checked) {
+                                   if (!checkedAll) {
                                        dispatch(selectAll(true))
                                    } else dispatch(selectAll(false))
                                }} 
