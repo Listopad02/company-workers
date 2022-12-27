@@ -2,10 +2,17 @@ import Table from "../../components/Table/Table"
 
 const TablePage = () => {
   return (
-    <Table firstCol={"Компания"}
+    // <div style={{display: "flex"}}>
+      <Table firstCol={"Компания"}
             secondCol={"Количество сотрудников"}
             thirdCol={"Адрес"}
-    />
+      />
+      //<Table firstCol={"Фамилия"}
+      //      secondCol={"Имя"}
+      //      thirdCol={"Должность"}
+      // />
+    // </div>
+    
   )
 }
 

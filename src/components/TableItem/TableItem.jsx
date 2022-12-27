@@ -1,10 +1,9 @@
 import { useState } from 'react'
 import { useDispatch } from "react-redux"
-import { setActive } from '../../redux/tableSlice'
+import { setActive, setChecked } from '../../redux/tableSlice'
 import "./TableItem.css"
 
-const TableItem = ({ company, staff, address, value }) => {
-    const [checked, setChecked] = useState(false)
+const TableItem = ({ company, staff, address, value, checked }) => {
     const dispatch = useDispatch();
 
     return (
@@ -14,7 +13,7 @@ const TableItem = ({ company, staff, address, value }) => {
                        value={value}
                        checked={checked} 
                        onChange={() => {
-                           setChecked(!checked)
+                           dispatch(setChecked(value))
                            dispatch(setActive(value))
                         }} 
                 />

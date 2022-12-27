@@ -8,6 +8,7 @@ export const tableSlice = createSlice({
                 "company": "Big Lots, Inc.",
                 "address": "1692 Pawje Heights",
                 "id": 0,
+                "checked": false,
                 "staff": [
                     {
                         "surname": "Smith",
@@ -40,6 +41,7 @@ export const tableSlice = createSlice({
                 "company": "Symbol Technologies Inc",
                 "address": "391 Giso View",
                 "id": 1,
+                "checked": false,
                 "staff": [
                     {
                         "surname": "Smith",
@@ -62,6 +64,7 @@ export const tableSlice = createSlice({
                 "company": "Pactiv Corp",
                 "address": "1667 Bunef Square",
                 "id": 2,
+                "checked": false,
                 "staff": [
                     {
                         "surname": "Smith",
@@ -89,6 +92,7 @@ export const tableSlice = createSlice({
                 "company": "CenturyTel Inc.",
                 "address": "1144 Jizwi Manor",
                 "id": 3,
+                "checked": false,
                 "staff": [
                     {
                         "surname": "Smith",
@@ -131,6 +135,7 @@ export const tableSlice = createSlice({
                 "company": "AK Steel Holding Corporation",
                 "address": "1577 Awuva Extension",
                 "id": 4,
+                "checked": false,
                 "staff": [
                     {
                         "surname": "Smith",
@@ -158,6 +163,7 @@ export const tableSlice = createSlice({
                 "company": "Revlon Inc",
                 "address": "632 Behge Turnpike",
                 "id": 5,
+                "checked": false,
                 "staff": [
                     {
                         "surname": "Smith",
@@ -208,7 +214,7 @@ export const tableSlice = createSlice({
             },
         ],
         active: [],
-        checked: false,
+        open: false,
     },
     reducers: {
         deleteValue: (state) => {
@@ -223,8 +229,23 @@ export const tableSlice = createSlice({
         setInactive: (state, action) => {
             state.active.splice(action.payload, 1)
         },
-        setChecked: (state) => {
-            state.checked = !state.checked
+        setChecked: (state, action) => {
+            state.companies.map(elem => {
+                if (elem.id === action.payload) {
+                    elem.checked = !elem.checked
+                }
+            })
+        },
+        setOpen: (state) => {
+            state.open = !state.open
+        },
+        pushToCompanies: (state, action) => {
+            state.companies.unshift(action.payload)
+        },
+        selectAll: (state, action) => {
+            for (let i = 0; i < state.companies.length; i++) {
+                state.companies[i].checked = action.payload
+            }
         }
     },
     extraReducers: {},
@@ -232,5 +253,5 @@ export const tableSlice = createSlice({
 
 const { actions, reducer } = tableSlice
 
-export const { setActive, setInactive, deleteValue, setChecked } = actions
+export const { setActive, setInactive, deleteValue, setChecked, setOpen, pushToCompanies, selectAll } = actions
 export default reducer

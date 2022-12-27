@@ -1,10 +1,12 @@
-import React from 'react'
+import "./Table.css"
+import { useState } from "react"
+import Alert from "../Alert/Alert"
 import TableItem from '../TableItem/TableItem'
 import { useDispatch, useSelector } from "react-redux"
-import "./Table.css"
-import { deleteValue } from '../../redux/tableSlice'
+import { deleteValue, setOpen, selectAll } from '../../redux/tableSlice'
 
-const Table = ({ firstCol, secondCol, thirdCol, purpose }) => {
+const Table = ({ firstCol, secondCol, thirdCol }) => {
+    const [checked, setChecked] = useState(false)
     const dispatch = useDispatch();
     const companies = useSelector(state => state.table.companies);
 
@@ -14,10 +16,21 @@ const Table = ({ firstCol, secondCol, thirdCol, purpose }) => {
                 <div className="table__settings">
                     <div className="table__settings-checkbox">
                         <p className='settings__checkbox-text'>Выделить все: </p>
-                        <input type="checkbox" name="" id="" />
+                        <input type="checkbox" 
+                               name="selectAll" 
+                               id="selectAll"
+                               onChange={() => {
+                                   setChecked(!checked)
+
+                                   if (!checked) {
+                                       dispatch(selectAll(true))
+                                   } else dispatch(selectAll(false))
+                               }} 
+                        />
                     </div>
                     <div className="table__settings-buttons">
-                        <button className='settings__buttons-button add'>Добавить</button>
+                        <button className='settings__buttons-button add'
+                                onClick={() => dispatch(setOpen())}>Добавить</button>
                         <button className='settings__buttons-button delete'
                                 onClick={() => dispatch(deleteValue())}>Удалить</button>
                     </div>
@@ -42,11 +55,13 @@ const Table = ({ firstCol, secondCol, thirdCol, purpose }) => {
                                    staff={company.staff.length} 
                                    address={company.address}
                                    value={company.id}
+                                   checked={company.checked}
                                    key={i}
                         />
                     ))
                 }
             </div>
+            <Alert />
         </div>
     )
 }
