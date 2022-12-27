@@ -1,5 +1,5 @@
 import { configureStore } from '@reduxjs/toolkit';
-import tableSlice from '../components/Table/tableSlice';
+import tableSlice from './tableSlice'
 
 
 export const store = configureStore({

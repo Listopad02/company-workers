@@ -9,7 +9,9 @@
     background-color: #FAFCF8;
     border: 1px solid #fff;
     border-radius: 10px;
-    padding: 50px;
+    padding: 20px;
+    max-height: 600px;
+    overflow: scroll;
 }
 .table__settings {
     display: flex;
@@ -55,10 +57,10 @@
     border: 1px solid #ccc;
     border-radius: 15px 15px 0 0;
 }
-.table__header-item:first-of-type, .table__body-item:first-of-type {
+.table__header-item:first-of-type {
     width: 56px;
 }
-.table__header-item, .table__body-item {
+.table__header-item {
     width: 177px;
 }
 input {
@@ -66,21 +68,4 @@ input {
     height: 14px;
     cursor: pointer;
     box-shadow: inset 0px 1px 2px rgba(0, 0, 0, 0.2);
-}
-.table__body {
-    display: flex;
-    align-items: center;
-    padding: 0px 20px;
-    gap: 20px;
-    height: 60px;
-    background: #FFFFFF;
-    border: 1px solid #E1CFFF;
-}
-.table__body:hover {
-    background: #EEE3FF;
-    color: #4005A0;
-    font-weight: 600;
-}
-.table__body:last-of-type {
-    border-radius: 0 0 15px 15px;
 }
