@@ -251,6 +251,9 @@ export const tableSlice = createSlice({
         },
         setCheckedAll: (state) => {
             state.checkedAll = !state.checkedAll
+            for (let i = 0; i < state.companies.length; i++) {
+                state.active.push(state.companies[i].id)
+            }
         }
     },
     extraReducers: {},
