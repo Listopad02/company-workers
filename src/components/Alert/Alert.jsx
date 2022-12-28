@@ -1,13 +1,14 @@
 import "./Alert.css"
 import { useState } from "react"
 import { useSelector, useDispatch } from "react-redux"
-import { setOpen, pushToCompanies } from '../../redux/tableSlice'
+import { setOpen, pushToCompanies, editCompany } from '../../redux/tableSlice'
 
 const Alert = () => {
   const [company, setCompany] = useState('');
   const [address, setAddress] = useState('');
   const open = useSelector(state => state.table.open);
   const companies = useSelector(state => state.table.companies);
+  const edit = useSelector(state => state.table.editCompany)
   const dispatch = useDispatch();
 
   const maxId = companies.reduce((max, item) => item.id > max ? item.id : max, 0);
@@ -36,15 +37,23 @@ const Alert = () => {
         <div className="form__buttons">
             <button className='settings__buttons-button add'
                     onClick={() => {
-                      dispatch(pushToCompanies({
-                        "company": company, 
-                        "address": address,
-                        "checked": false,
-                        "id": maxId + 1,
-                        "staff": []
-                      }))
+                      if (edit) {
+                        dispatch(editCompany({
+                          "company": company,
+                          "address": address
+                        }))
+                      } else {
+                        dispatch(pushToCompanies({
+                          "company": company, 
+                          "address": address,
+                          "checked": false,
+                          "id": maxId + 1,
+                          "staff": []
+                        }))
+                      }
                       setCompany('')
                       setAddress('')
+                      dispatch(setOpen())
                     }}
                     disabled={company && address ? false : true}
                 >Добавить</button>

@@ -2,8 +2,6 @@
     display: flex;
     align-items: center;
     justify-content: center;
-    height: 100vh;
-    background-color: #4005A0;
 }
 .table__container {
     background-color: #FAFCF8;
@@ -61,7 +59,7 @@
     width: 56px;
 }
 .table__header-item {
-    width: 177px;
+    width: 30%;
 }
 input {
     width: 14px;
